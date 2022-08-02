@@ -1,8 +1,93 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.collections.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.collections.FXCollections?>
 
-<VBox xmlns:fx="http://javafx.com/fxml/1">
-	<!-- TODO Add Nodes -->
+<VBox prefHeight="401.0" prefWidth="436.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <HBox prefHeight="87.0" prefWidth="436.0">
+         <children>
+            <Label prefHeight="27.0" prefWidth="240.0" text="Please enetr your customer number:">
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+               <HBox.margin>
+                  <Insets top="7.0" />
+               </HBox.margin>
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <TextArea maxHeight="-Infinity" prefHeight="20.0" prefWidth="154.0">
+               <HBox.margin>
+                  <Insets top="10.0" />
+               </HBox.margin>
+            </TextArea>
+         </children>
+      </HBox>
+      <HBox prefHeight="84.0" prefWidth="436.0">
+         <children>
+            <Button mnemonicParsing="false" prefHeight="27.0" prefWidth="118.0" text="DEPOSIT">
+               <HBox.margin>
+                  <Insets left="75.0" />
+               </HBox.margin>
+            </Button>
+            <TextField prefHeight="25.0" prefWidth="126.0">
+               <HBox.margin>
+                  <Insets left="25.0" />
+               </HBox.margin>
+            </TextField>
+         </children>
+      </HBox>
+      <HBox prefHeight="94.0" prefWidth="436.0">
+         <children>
+            <Label prefHeight="47.0" prefWidth="227.0" text="Please enter your machine number:">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <ChoiceBox prefHeight="28.0" prefWidth="185.0">
+            	<items>
+            		<FXCollections fx:factory="observableArrayList">
+            			<String fx:value="Washing Machine 1" />
+            			<String fx:value="Washing Machine 2" />
+            			<String fx:value="Washing Machine 3" />
+            			<String fx:value="Dryer 1" />
+            			<String fx:value="Dryer 2" />
+            			<String fx:value="Dryer 3" />
+            		</FXCollections>
+            	</items>
+               <HBox.margin>
+                  <Insets top="10.0" />
+               </HBox.margin>
+            </ChoiceBox>
+         </children>
+      </HBox>
+      <HBox prefHeight="100.0" prefWidth="200.0">
+         <children>
+            <Button mnemonicParsing="false" prefHeight="29.0" prefWidth="111.0" text="Press to Start">
+               <HBox.margin>
+                  <Insets left="50.0" />
+               </HBox.margin>
+               <font>
+                  <Font size="13.0" />
+               </font>
+            </Button>
+            <Button mnemonicParsing="false" prefHeight="29.0" prefWidth="65.0" text="Pause">
+               <HBox.margin>
+                  <Insets left="100.0" />
+               </HBox.margin>
+               <font>
+                  <Font size="13.0" />
+               </font>
+            </Button>
+         </children>
+      </HBox>		
+   </children>
 </VBox>
-

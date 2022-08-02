@@ -6,8 +6,8 @@ public class WashingMachine extends Machine{
 	private String pausePassword;
 	
 	WashingMachine(String machineName, double price, String pwd){
-		super.name = machineName;
-		super.pricePerUse = price;
+		this.setName(machineName);;
+		this.setPricePerUse(price);;
 		pausePassword = pwd;
 	}
 	
@@ -21,13 +21,13 @@ public class WashingMachine extends Machine{
 
 	@Override
 	public String start(String id, String mode) {
-		if (!this.status)
+		if (!this.getStatus())
 			return "Sorry, this machine is not available to use.";
-		else if (this.inUse)
+		else if (this.getInUse())
 			return "This machine is currently in use. Please find another one.";
 		else {
 			setWashMode(mode);
-			super.inUse = true;
+			this.setInUse(true);;
 			return "";
 		}
 	}
@@ -40,8 +40,8 @@ public class WashingMachine extends Machine{
 	@Override
 	public String pause(String password) {
 		if (password!=null && password.equals(pausePassword)) {
-			washMode = "";
-			super.inUse = false;
+			setWashMode("");
+			this.setInUse(false);;
 			return "";
 		}else return "Invalid Password";
 	}

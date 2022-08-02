@@ -2,11 +2,11 @@ package application;
 
 public abstract class Machine {
 	
-	protected String name;
-	protected double pricePerUse;
-	protected boolean inUse = false;
-	protected boolean status = true;
-	protected String customerID = "";
+	private String name;
+	private double pricePerUse;
+	private boolean inUse = false;
+	private boolean status = true;
+	private String customerID = "";
 	
 	public String getName() {
 		return name;
@@ -34,6 +34,14 @@ public abstract class Machine {
 	
 	public void setStatus(boolean newStatus) {
 		status = newStatus;
+	}
+	
+	public void setName(String nameToSet) {
+		name = nameToSet;
+	}
+	
+	public void setInUse(boolean inUseToSet) {
+		inUse = inUseToSet;
 	}
 	
 	public abstract String start(String id, String mode);

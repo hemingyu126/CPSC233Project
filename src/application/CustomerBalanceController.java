@@ -14,7 +14,7 @@ import javafx.stage.Stage;
 
 public class CustomerBalanceController {
 	Stage applicationStage;
-	
+
 	private DataCenter dc = new DataCenter();
 
     @FXML
@@ -49,6 +49,7 @@ public class CustomerBalanceController {
     	applicationStage.setScene(Newaccount);
     }
 
+
     @FXML
     void DEPOSIT(ActionEvent event) {
     	double balance = 0.0;
@@ -56,7 +57,6 @@ public class CustomerBalanceController {
     	balance = balance + depositamount;
     	
     	
-
     }
 
     @FXML

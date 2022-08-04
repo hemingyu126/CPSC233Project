@@ -26,6 +26,15 @@ public class DataCenter {
 		}
 		return null;
 	}
+	
+	public void addCustomer(Customer newCustomter) {
+		boolean toAdd = true;
+		for (Customer c: customers)
+			if (c.getCustomerID().equals(newCustomter.getCustomerID()))
+				toAdd = false;
+		if (toAdd)
+			customers.add(newCustomter);
+	}
 
 
 }

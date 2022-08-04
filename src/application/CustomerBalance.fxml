@@ -13,7 +13,7 @@
    <children>
       <HBox prefHeight="121.0" prefWidth="557.0">
          <children>
-            <Label prefHeight="27.0" prefWidth="240.0" text="Please enetr your customer number:">
+            <Label prefHeight="27.0" prefWidth="216.0" text="Please enter your customer number:">
                <opaqueInsets>
                   <Insets />
                </opaqueInsets>

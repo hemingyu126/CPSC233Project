@@ -30,7 +30,7 @@ public class DataCenter {
 	public void addCustomer(Customer newCustomter) {
 		boolean toAdd = true;
 		for (Customer c: customers)
-			if (c.getCustomerID().equals(newCustomter.getCustomerID()))
+			if (c.equals(newCustomter))
 				toAdd = false;
 		if (toAdd)
 			customers.add(newCustomter);

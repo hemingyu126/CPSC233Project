@@ -15,6 +15,9 @@ public class Main extends Application {
 		try {
 			FXMLLoader loader = new FXMLLoader();
 			VBox root = loader.load(new FileInputStream("src/application/CustomerBalance.fxml"));
+			CustomerBalanceController controller = (CustomerBalanceController)loader.getController();
+			controller.applicationStage = primaryStage;
+			
 			Scene scene = new Scene(root,400,400);
 			
 			primaryStage.setScene(scene);

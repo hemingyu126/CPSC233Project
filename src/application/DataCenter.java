@@ -3,8 +3,8 @@ package application;
 import java.util.ArrayList;
 
 public class DataCenter {
-	private ArrayList<Customer> customers;
-	private ArrayList<Machine> machines;
+	private ArrayList<Customer> customers = new ArrayList<Customer>();
+	private ArrayList<Machine> machines = new ArrayList<Machine>();
 	
 	DataCenter(){
 		customers = new ArrayList<Customer>();

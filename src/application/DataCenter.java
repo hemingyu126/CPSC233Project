@@ -29,6 +29,7 @@ public class DataCenter {
 	
 	public void addCustomer(Customer newCustomter) {
 		boolean toAdd = true;
+		
 		for (Customer c: customers)
 			if (c.equals(newCustomter))
 				toAdd = false;

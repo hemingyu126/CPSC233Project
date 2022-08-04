@@ -11,9 +11,9 @@
 
 <VBox prefHeight="401.0" prefWidth="436.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.CustomerBalanceController">
    <children>
-      <HBox prefHeight="87.0" prefWidth="436.0">
+      <HBox prefHeight="57.0" prefWidth="436.0">
          <children>
-            <Label prefHeight="27.0" prefWidth="240.0" text="Please enetr your customer number:">
+            <Label prefHeight="27.0" prefWidth="216.0" text="Please enter your customer number:">
                <opaqueInsets>
                   <Insets />
                </opaqueInsets>
@@ -24,25 +24,39 @@
                   <Font size="14.0" />
                </font>
             </Label>
-            <TextArea fx:id="customernumberTextField" maxHeight="-Infinity" prefHeight="25.0" prefWidth="154.0">
+            <TextArea fx:id="customernumberTextField" maxHeight="-Infinity" prefHeight="25.0" prefWidth="138.0">
                <HBox.margin>
                   <Insets top="10.0" />
                </HBox.margin>
             </TextArea>
-         </children>
-      </HBox>
-      <HBox prefHeight="84.0" prefWidth="436.0">
-         <children>
-            <Button mnemonicParsing="false" onAction="#DEPOSIT" prefHeight="27.0" prefWidth="118.0" text="DEPOSIT">
+            <Button fx:id="logIn" mnemonicParsing="false" prefHeight="27.0" prefWidth="71.0" text="Log in">
                <HBox.margin>
-                  <Insets left="75.0" />
+                  <Insets left="5.0" top="10.0" />
                </HBox.margin>
             </Button>
-            <TextField fx:id="depositamountTextField" prefHeight="25.0" prefWidth="126.0">
+         </children>
+      </HBox>
+      <Label fx:id="balanceDisplay" alignment="CENTER" prefHeight="28.0" prefWidth="436.0" />
+      <HBox prefHeight="82.0" prefWidth="436.0">
+         <children>
+            <Label prefHeight="17.0" prefWidth="109.0" text="Refill my account:">
+               <font>
+                  <Font size="14.0" />
+               </font>
                <HBox.margin>
-                  <Insets left="25.0" />
+                  <Insets top="10.0" />
+               </HBox.margin>
+            </Label>
+            <TextField fx:id="depositamountTextField" prefHeight="25.0" prefWidth="126.0" promptText="Enter Amount">
+               <HBox.margin>
+                  <Insets left="25.0" top="10.0" />
                </HBox.margin>
             </TextField>
+            <Button mnemonicParsing="false" onAction="#DEPOSIT" prefHeight="27.0" prefWidth="118.0" text="DEPOSIT">
+               <HBox.margin>
+                  <Insets left="25.0" top="10.0" />
+               </HBox.margin>
+            </Button>
          </children>
       </HBox>
       <HBox prefHeight="94.0" prefWidth="436.0">

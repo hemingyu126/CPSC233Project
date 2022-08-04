@@ -3,8 +3,13 @@ package application;
 import java.util.ArrayList;
 
 public class DataCenter {
-	ArrayList<Customer> customers = new ArrayList<Customer>();
-	ArrayList<Machine> machines = new ArrayList<Machine>();
+	private ArrayList<Customer> customers = new ArrayList<Customer>();
+	private ArrayList<Machine> machines = new ArrayList<Machine>();
+	
+	DataCenter(){
+		customers = new ArrayList<Customer>();
+		machines = new ArrayList<Machine>();
+	}
 	
 	public Customer getCustomer(String customerID){
 		for (Customer c: customers) {

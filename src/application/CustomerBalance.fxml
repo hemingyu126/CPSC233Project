@@ -11,20 +11,17 @@
 
 <VBox prefHeight="506.0" prefWidth="433.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.CustomerBalanceController">
    <children>
-      <HBox prefHeight="121.0" prefWidth="557.0">
+      <Label prefHeight="20.0" prefWidth="291.0" text="Please enter your customer number:">
+         <opaqueInsets>
+            <Insets />
+         </opaqueInsets>
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <HBox prefHeight="67.0" prefWidth="433.0">
          <children>
-            <Label prefHeight="27.0" prefWidth="216.0" text="Please enter your customer number:">
-               <opaqueInsets>
-                  <Insets />
-               </opaqueInsets>
-               <HBox.margin>
-                  <Insets top="7.0" />
-               </HBox.margin>
-               <font>
-                  <Font size="14.0" />
-               </font>
-            </Label>
-            <TextArea fx:id="customernumberTextField" maxHeight="-Infinity" prefHeight="25.0" prefWidth="76.0">
+            <TextArea fx:id="customernumberTextField" maxHeight="-Infinity" prefHeight="20.0" prefWidth="150.0">
                <HBox.margin>
                   <Insets top="10.0" />
                </HBox.margin>
@@ -39,6 +36,16 @@
             </Button>
          </children>
       </HBox>
+      <Label fx:id="logInErrorMessage" textFill="RED">
+         <font>
+            <Font size="13.0" />
+         </font>
+      </Label>
+      <Label fx:id="loginSuccessDisplay">
+         <font>
+            <Font size="13.0" />
+         </font>
+      </Label>
       <HBox prefHeight="115.0" prefWidth="557.0">
          <children>
             <Label prefHeight="31.0" prefWidth="215.0" text="Or press to create a new account :">

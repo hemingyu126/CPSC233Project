@@ -33,5 +33,10 @@ public class Customer {
 	public void addMoney(double amountToAdd) {
 		if (status) balance += amountToAdd;
 	}
+	
+	public boolean equals(Customer c){
+		if (c.getCustomerID().equals(customerID)) return true;
+		else return false;
+	}
 
 }

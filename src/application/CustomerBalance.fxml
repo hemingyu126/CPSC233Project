@@ -18,12 +18,15 @@
          <font>
             <Font size="14.0" />
          </font>
+         <VBox.margin>
+            <Insets left="10.0" top="10.0" />
+         </VBox.margin>
       </Label>
       <HBox prefHeight="67.0" prefWidth="433.0">
          <children>
-            <TextArea fx:id="customernumberTextField" maxHeight="-Infinity" prefHeight="20.0" prefWidth="150.0">
+            <TextArea fx:id="customernumberTextField" maxHeight="-Infinity" prefHeight="26.0" prefWidth="150.0">
                <HBox.margin>
-                  <Insets top="10.0" />
+                  <Insets left="10.0" top="10.0" />
                </HBox.margin>
             </TextArea>
             <Button mnemonicParsing="false" onAction="#Login" prefHeight="29.0" prefWidth="60.0" text="Log in">
@@ -40,18 +43,27 @@
          <font>
             <Font size="13.0" />
          </font>
+         <VBox.margin>
+            <Insets left="10.0" />
+         </VBox.margin>
       </Label>
       <Label fx:id="loginSuccessDisplay">
          <font>
             <Font size="13.0" />
          </font>
+         <VBox.margin>
+            <Insets left="10.0" />
+         </VBox.margin>
       </Label>
-      <HBox prefHeight="115.0" prefWidth="557.0">
+      <HBox prefHeight="74.0" prefWidth="433.0">
          <children>
             <Label prefHeight="31.0" prefWidth="215.0" text="Or press to create a new account :">
                <font>
                   <Font size="14.0" />
                </font>
+               <HBox.margin>
+                  <Insets left="10.0" />
+               </HBox.margin>
             </Label>
             <Button mnemonicParsing="false" onAction="#Newaccount" prefHeight="35.0" prefWidth="119.0" text="New account">
                <HBox.margin>
@@ -63,14 +75,17 @@
             </Button>
          </children>
       </HBox>
-      <HBox prefHeight="111.0" prefWidth="557.0">
+      <HBox prefHeight="38.0" prefWidth="433.0">
          <children>
             <Label prefHeight="33.0" prefWidth="166.0" text="Please choose the amount :">
                <font>
                   <Font size="13.0" />
                </font>
+               <HBox.margin>
+                  <Insets left="10.0" />
+               </HBox.margin>
             </Label>
-            <ChoiceBox fx:id="depositamountChoiceBox" prefHeight="30.0" prefWidth="130.0">
+            <ChoiceBox fx:id="depositAmountChoiceBox" prefHeight="30.0" prefWidth="130.0">
             	<items>
             		<FXCollections fx:factory="observableArrayList">
             			<Integer fx:value="5" />
@@ -80,19 +95,28 @@
             		</FXCollections>
             	</items>
              </ChoiceBox>
-            <Button mnemonicParsing="false" onAction="#DEPOSIT" prefHeight="30.0" prefWidth="71.0" text="DEPOSIT">
+            <Button mnemonicParsing="false" onAction="#deposit" prefHeight="30.0" prefWidth="71.0" text="DEPOSIT">
                <HBox.margin>
                   <Insets left="10.0" />
                </HBox.margin>
             </Button>
          </children>
       </HBox>
-      <HBox prefHeight="117.0" prefWidth="557.0">
+      <Label fx:id="addMoneyLabel" textFill="#ff0707">
+         <VBox.margin>
+            <Insets left="10.0" />
+         </VBox.margin>
+      </Label>
+      <HBox prefHeight="35.0" prefWidth="433.0" />
+      <HBox prefHeight="45.0" prefWidth="433.0">
          <children>
-            <Label prefHeight="47.0" prefWidth="227.0" text="Please enter your machine number:">
+            <Label prefHeight="26.0" prefWidth="227.0" text="Please enter your machine number:">
                <font>
                   <Font size="14.0" />
                </font>
+               <HBox.margin>
+                  <Insets left="10.0" />
+               </HBox.margin>
             </Label>
             <ChoiceBox fx:id="machinenumberChoiceBox" prefHeight="28.0" prefWidth="185.0">
             	<items>
@@ -106,16 +130,16 @@
             		</FXCollections>
             	</items>
                <HBox.margin>
-                  <Insets top="10.0" />
+                  <Insets />
                </HBox.margin>
             </ChoiceBox>
          </children>
       </HBox>
-      <HBox prefHeight="100.0" prefWidth="200.0">
+      <HBox prefHeight="35.0" prefWidth="433.0">
          <children>
             <Button mnemonicParsing="false" onAction="#Start" prefHeight="29.0" prefWidth="111.0" text="Press to Start">
                <HBox.margin>
-                  <Insets left="50.0" />
+                  <Insets left="35.0" />
                </HBox.margin>
                <font>
                   <Font size="13.0" />
@@ -123,13 +147,23 @@
             </Button>
             <Button mnemonicParsing="false" onAction="#Pause" prefHeight="29.0" prefWidth="65.0" text="Pause">
                <HBox.margin>
-                  <Insets left="100.0" />
+                  <Insets left="30.0" />
                </HBox.margin>
                <font>
                   <Font size="13.0" />
                </font>
             </Button>
+            <Button fx:id="availabilityButton" mnemonicParsing="false" onAction="#checkAvailable" prefHeight="29.0" prefWidth="120.0" text="Check Availability">
+               <HBox.margin>
+                  <Insets left="30.0" />
+               </HBox.margin>
+            </Button>
          </children>
-      </HBox>		
+      </HBox>
+      <Label fx:id="machineLabel" prefHeight="17.0" prefWidth="413.0">
+         <VBox.margin>
+            <Insets left="10.0" />
+         </VBox.margin>
+      </Label>		
    </children>
 </VBox>

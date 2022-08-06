@@ -4,19 +4,14 @@ import javafx.event.ActionEvent;
 
 import javafx.fxml.FXML;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.ChoiceBox;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextArea;
-import javafx.scene.control.TextField;
-import javafx.scene.layout.HBox;
-import javafx.scene.layout.VBox;
+import javafx.scene.control.*;
+import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
 public class CustomerBalanceController {
 	Stage applicationStage;
-	Customer customerInUse;
+	private Customer customerInUse;
 
 	private DataCenter dc = new DataCenter();
 
@@ -24,16 +19,18 @@ public class CustomerBalanceController {
     private TextArea customernumberTextField;
 
     @FXML
-    private ChoiceBox<Integer> depositamountChoiceBox;
+    private ChoiceBox<Integer> depositAmountChoiceBox;
 
     @FXML
     private ChoiceBox<?> machinenumberChoiceBox;
     
     @FXML
-    private Label logInErrorMessage;
+    private Label logInErrorMessage, loginSuccessDisplay, machineLabel, addMoneyLabel;
     
     @FXML
-    private Label loginSuccessDisplay;
+    private Button availabilityButton ;
+    
+    
     
     Label newAccountErrorDisplay = new Label();
     
@@ -41,6 +38,8 @@ public class CustomerBalanceController {
     void Login(ActionEvent event) {
     	logInErrorMessage.setText("");
     	loginSuccessDisplay.setText("");
+    	addMoneyLabel.setText("");
+    	machineLabel.setText("");
     	String customernumber =  customernumberTextField.getText();
     	customerInUse = dc.getCustomer(customernumber);
     	if (customerInUse==null) {
@@ -56,7 +55,7 @@ public class CustomerBalanceController {
     	Scene mainScene = applicationStage.getScene();
     	
     	VBox newAccountView = new VBox();
-    	Label newAccountLabel = new Label("Please enter the customerID you would like to have: ");
+    	Label newAccountLabel = new Label("Please enter a 4-digit customerID you would like to have: ");
     	
     	newAccountErrorDisplay.setTextFill(Color.RED);
     	
@@ -75,22 +74,29 @@ public class CustomerBalanceController {
 
     private void createNewAccount(Scene mainScene, TextField textfield) {
     	newAccountErrorDisplay.setText("");
-		String proposedID = textfield.getText();
-		Customer newCustomer = new Customer(proposedID);
-		boolean outcome = dc.addCustomer(newCustomer);
-		if (!outcome) {
-			newAccountErrorDisplay.setText("Account already exist, please try another account.");
-		}
-		applicationStage.setScene(mainScene);
+		String outcome = dc.addCustomer(textfield.getText());
+		if (outcome.equals("")) applicationStage.setScene(mainScene);
+		else newAccountErrorDisplay.setText(outcome);
 	}
 
 	@FXML
-    void DEPOSIT(ActionEvent event) {
-    	double balance = 0.0;
-    	int depositamount = depositamountChoiceBox.getValue();
-    	balance = balance + depositamount;
-    	
-    	
+    void deposit(ActionEvent event) {
+		addMoneyLabel.setTextFill(Color.RED);
+		addMoneyLabel.setText("");
+		try {
+			int amountToDeposit = depositAmountChoiceBox.getValue();
+			if (customerInUse == null)
+				addMoneyLabel.setText("Please log in first.");
+			else {
+				customerInUse.addMoney(amountToDeposit);
+				addMoneyLabel.setTextFill(Color.BLACK);
+				addMoneyLabel.setText("Success!");
+				loginSuccessDisplay.setText("Your current balance: " + customerInUse.getBalance());
+			}
+				
+		}catch(NullPointerException e) {
+			addMoneyLabel.setText("Please choose an amount from the choice box to deposit.");
+		}
     }
 
     @FXML
@@ -101,6 +107,11 @@ public class CustomerBalanceController {
     @FXML
     void Pause(ActionEvent event) {
 
+    }
+    
+    @FXML
+    void checkAvailable(ActionEvent event) {
+    	
     }
 
 }

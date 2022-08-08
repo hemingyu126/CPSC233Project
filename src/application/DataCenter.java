@@ -39,6 +39,10 @@ public class DataCenter {
 		return null;
 	}
 	
+	public ArrayList<Machine> getAllMachines(){
+		return machines;
+	}
+	
 	public String addCustomer(String requestedID) {
 		for (char c: requestedID.toCharArray())
 			if (!Character.isDigit(c))

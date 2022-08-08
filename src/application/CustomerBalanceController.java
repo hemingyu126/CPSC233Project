@@ -22,13 +22,15 @@ public class CustomerBalanceController {
     private ChoiceBox<Integer> depositAmountChoiceBox;
 
     @FXML
-    private ChoiceBox<?> machinenumberChoiceBox;
+    private ChoiceBox<String> machinenumberChoiceBox;
     
     @FXML
     private Label logInErrorMessage, loginSuccessDisplay, machineLabel, addMoneyLabel;
     
     @FXML
-    private Button availabilityButton ;
+    private Button availabilityButton;
+    
+    
     
     
     
@@ -101,17 +103,35 @@ public class CustomerBalanceController {
 
     @FXML
     void Start(ActionEvent event) {
-
+    	machineLabel.setText("");
+    	String machinenumber = machinenumberChoiceBox.getValue();
+    	Machine m = dc.getMachine(machinenumber);
+    	if (!m.getInUse()) {
+    		customerInUse.addMoney(-m.getPricePerUse());
+    		loginSuccessDisplay.setText("Your new balance:" + customerInUse.getBalance());
+    		machineLabel.setText("Payment Approved.");
+    		m.setInUse(true);
+    	}
+    	else {
+    		machineLabel.setText("Machine is in use, please choose another one.");
+    	}
+    	
     }
 
     @FXML
     void Pause(ActionEvent event) {
+    	
 
     }
     
     @FXML
     void checkAvailable(ActionEvent event) {
-    	
+    	machineLabel.setText("");
+    	String availableMachines = "Available machines:";
+    	for (Machine m: dc.getAllMachines())
+    		if (!m.getInUse())
+    			availableMachines = availableMachines +"\n" + m.getName();
+    	machineLabel.setText(availableMachines);
     }
 
 }

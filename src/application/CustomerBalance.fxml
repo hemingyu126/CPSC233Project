@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.collections.FXCollections?>
 
-<VBox prefHeight="506.0" prefWidth="433.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.CustomerBalanceController">
+<VBox prefHeight="582.0" prefWidth="433.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.CustomerBalanceController">
    <children>
       <Label prefHeight="20.0" prefWidth="291.0" text="Please enter your customer number:">
          <opaqueInsets>
@@ -108,17 +108,17 @@
          </VBox.margin>
       </Label>
       <HBox prefHeight="35.0" prefWidth="433.0" />
+      <Label prefHeight="26.0" prefWidth="227.0" text="Please enter your machine number:">
+         <font>
+            <Font size="14.0" />
+         </font>
+         <VBox.margin>
+            <Insets left="10.0" />
+         </VBox.margin>
+      </Label>
       <HBox prefHeight="45.0" prefWidth="433.0">
          <children>
-            <Label prefHeight="26.0" prefWidth="227.0" text="Please enter your machine number:">
-               <font>
-                  <Font size="14.0" />
-               </font>
-               <HBox.margin>
-                  <Insets left="10.0" />
-               </HBox.margin>
-            </Label>
-            <ChoiceBox fx:id="machinenumberChoiceBox" prefHeight="28.0" prefWidth="185.0">
+            <ChoiceBox fx:id="machinenumberChoiceBox" prefHeight="28.0" prefWidth="168.0">
             	<items>
             		<FXCollections fx:factory="observableArrayList">
             			<String fx:value="Washing Machine 1" />
@@ -130,16 +130,21 @@
             		</FXCollections>
             	</items>
                <HBox.margin>
-                  <Insets />
+                  <Insets left="10.0" top="5.0" />
                </HBox.margin>
             </ChoiceBox>
+            <Button fx:id="availabilityButton" mnemonicParsing="false" onAction="#checkAvailable" prefHeight="29.0" prefWidth="120.0" text="Check Availability">
+               <HBox.margin>
+                  <Insets left="30.0" top="5.0" />
+               </HBox.margin>
+            </Button>
          </children>
       </HBox>
       <HBox prefHeight="35.0" prefWidth="433.0">
          <children>
             <Button mnemonicParsing="false" onAction="#Start" prefHeight="29.0" prefWidth="111.0" text="Press to Start">
                <HBox.margin>
-                  <Insets left="35.0" />
+                  <Insets left="80.0" />
                </HBox.margin>
                <font>
                   <Font size="13.0" />
@@ -147,20 +152,15 @@
             </Button>
             <Button mnemonicParsing="false" onAction="#Pause" prefHeight="29.0" prefWidth="65.0" text="Pause">
                <HBox.margin>
-                  <Insets left="30.0" />
+                  <Insets left="80.0" />
                </HBox.margin>
                <font>
                   <Font size="13.0" />
                </font>
             </Button>
-            <Button fx:id="availabilityButton" mnemonicParsing="false" onAction="#checkAvailable" prefHeight="29.0" prefWidth="120.0" text="Check Availability">
-               <HBox.margin>
-                  <Insets left="30.0" />
-               </HBox.margin>
-            </Button>
          </children>
       </HBox>
-      <Label fx:id="machineLabel" prefHeight="17.0" prefWidth="413.0">
+      <Label fx:id="machineLabel" prefHeight="165.0" prefWidth="413.0">
          <VBox.margin>
             <Insets left="10.0" />
          </VBox.margin>

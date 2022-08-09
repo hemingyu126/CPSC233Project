@@ -22,7 +22,7 @@ public class CustomerBalanceController {
     private ChoiceBox<Integer> depositAmountChoiceBox;
 
     @FXML
-    private ChoiceBox<?> machinenumberChoiceBox;
+    private ChoiceBox<String> machinenumberChoiceBox;
     
     @FXML
     private Label logInErrorMessage, loginSuccessDisplay, machineLabel, addMoneyLabel;
@@ -106,6 +106,15 @@ public class CustomerBalanceController {
 
     @FXML
     void Pause(ActionEvent event) {
+    	machineLabel.setText("");
+    	String machinenumber = machinenumberChoiceBox.getValue();
+    	Machine m = dc.getMachine(machinenumber);
+    	if(!m.getCustomerID().equals(customerInUse.getCustomerID())) {
+    		machineLabel.setText("Machine is in use, please choose another one.");
+    	}
+    	else {
+    		machineLabel.setText("Machine is pauesed.");
+    	}
 
     }
     

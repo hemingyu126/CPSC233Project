@@ -45,8 +45,11 @@ public class DataCenter {
 	
 	public String addCustomer(String requestedID) {
 		for (char c: requestedID.toCharArray())
-			if (!Character.isDigit(c))
-				return "Customer ID should an integer and cannot contain:" + c;
+			if (!Character.isDigit(c)) {
+				if(c == ' ') {
+					return "Customer ID should be integers and cannot contain 'space'.";
+				}else return "Customer ID should be integers and cannot contain: " + c;
+			}
 		if (requestedID.length()!=4)
 			return "Customer ID must be 4 digits. The ID you requested is "+requestedID.length()+ " digits";
 		Customer toAdd = new Customer(requestedID);

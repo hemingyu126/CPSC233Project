@@ -150,7 +150,7 @@
                   <Font size="13.0" />
                </font>
             </Button>
-            <Button mnemonicParsing="false" onAction="#Pause" prefHeight="29.0" prefWidth="65.0" text="Pause">
+            <Button mnemonicParsing="false" onAction="#End" prefHeight="29.0" prefWidth="65.0" text="End">
                <HBox.margin>
                   <Insets left="80.0" />
                </HBox.margin>

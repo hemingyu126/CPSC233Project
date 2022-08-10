@@ -44,6 +44,10 @@ public abstract class Machine {
 		inUse = inUseToSet;
 	}
 	
+	public void setCustomerID(String id) {
+		customerID = id;
+	}
+	
 	public abstract String start(String id, String mode);
 	
 	public abstract String pause();

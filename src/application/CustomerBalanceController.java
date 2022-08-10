@@ -43,12 +43,20 @@ public class CustomerBalanceController {
     	addMoneyLabel.setText("");
     	machineLabel.setText("");
     	String customernumber =  customernumberTextField.getText();
-    	customerInUse = dc.getCustomer(customernumber);
-    	if (customerInUse==null) {
-    		logInErrorMessage.setText("Account does not exist, please create a new account.");	
+    	
+    	if (customernumber == "") {
+    		logInErrorMessage.setText("Please enter your account number.");
     	}else {
-    		loginSuccessDisplay.setText("Your current balance: " + customerInUse.getBalance());
+    		customerInUse = dc.getCustomer(customernumber);
+        	if (customerInUse==null) {
+        		customerInUse = dc.getCustomer(customernumber);
+        		logInErrorMessage.setText("Account does not exist, please create a new account.");	
+        	}else {
+        		loginSuccessDisplay.setText("Your current balance: " + customerInUse.getBalance());
+        	}
     	}
+    	machinenumberChoiceBox.setValue(null);
+    	depositAmountChoiceBox.setValue(null);
 
     }
     
@@ -104,30 +112,45 @@ public class CustomerBalanceController {
     @FXML
     void Start(ActionEvent event) {
     	machineLabel.setText("");
-    	String machinenumber = machinenumberChoiceBox.getValue();
-    	Machine m = dc.getMachine(machinenumber);
-    	if (!m.getInUse()) {
-    		customerInUse.addMoney(-m.getPricePerUse());
-    		loginSuccessDisplay.setText("Your new balance:" + customerInUse.getBalance());
-    		machineLabel.setText("Payment Approved.");
-    		m.setInUse(true);
+    	try {
+    		String machinenumber = machinenumberChoiceBox.getValue();
+        	Machine m = dc.getMachine(machinenumber);
+        	if (customerInUse.getBalance()<m.getPricePerUse())
+        		machineLabel.setText("Insufficient fund, please deposit more money.");
+        	else if (!m.getInUse()) {
+        		customerInUse.addMoney(-m.getPricePerUse());
+        		loginSuccessDisplay.setText("Your new balance:" + customerInUse.getBalance());
+        		machineLabel.setText("Payment Approved.");
+        		m.setInUse(true);
+        	    m.setCustomerID(customerInUse.getCustomerID());
+        	}
+        	else {
+        		machineLabel.setText("Machine is in use, please choose another one.");
+        	}
+    	}catch(NullPointerException e) {
+    		machineLabel.setText("Please select a machine frist.");
     	}
-    	else {
-    		machineLabel.setText("Machine is in use, please choose another one.");
-    	}
+    	
     	
     }
 
     @FXML
-    void Pause(ActionEvent event) {
+    void End(ActionEvent event) {
     	machineLabel.setText("");
-    	String machinenumber = machinenumberChoiceBox.getValue();
-    	Machine m = dc.getMachine(machinenumber);
-    	if(!m.getCustomerID().equals(customerInUse.getCustomerID())) {
-    		machineLabel.setText("Machine is in use, please choose another one.");
-    	}
-    	else {
-    		machineLabel.setText("Machine is pauesed.");
+    	try {
+    		String machinenumber = machinenumberChoiceBox.getValue();
+        	Machine m = dc.getMachine(machinenumber);
+        	if (!m.getInUse()) {
+        		machineLabel.setText("Machine is not in use.");
+        	}else if(!m.getCustomerID().equals(customerInUse.getCustomerID())) {
+        		machineLabel.setText("Machine is in use, please choose another one.");
+        	}else {
+        		machineLabel.setText("Machine is ended. Thanks for using.");
+        		m.setInUse(false);
+        		m.setCustomerID("");
+        	}
+    	}catch(NullPointerException e) {
+    		machineLabel.setText("Please select a machine frist.");
     	}
 
 

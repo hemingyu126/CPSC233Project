@@ -50,8 +50,8 @@ public abstract class Machine {
 	
 	public abstract String start(String id, String mode);
 	
-	public abstract String pause();
+	public abstract String pause(String id);
 	
-	public abstract String pause(String password);
+	public abstract void pause();
 
 }

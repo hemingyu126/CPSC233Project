@@ -20,26 +20,36 @@ public class Dryer extends Machine {
 	@Override
 	public String start(String id, String tempToSet) {
 		if (!this.getStatus())
-			return "Sorry, this machine is not available to use.";
+			return "Sorry, this machine is under maintenance. Please find another one.";
 		else if (this.getInUse())
-			return "This machine is currently in use. Please find another one.";
+			return "Sorry, this machine is in use. Please find another one.";
 		else {
-			this.setTemperature(tempToSet);;
-			this.setInUse(true);
+			setTemperature(tempToSet);;
+			setInUse(true);
+			setCustomerID(id);
 			return "";
 		}
 	}
 
 	@Override
-	public String pause() {
-		this.setInUse(false);
-		temperature = "";
-		return "";
+	public String pause(String id) {
+		if (!this.getInUse())
+			return "This machine is not in use.";
+		else if (!id.equals(getCustomerID()))
+			return "You cannot stop the machine, because it's serving someone else.";
+		else {
+			setTemperature("");
+			setInUse(false);
+			setCustomerID("");
+			return "";
+		}
 	}
 
 	@Override
-	public String pause(String password) {
-		return pause();
+	public void pause() {
+		setInUse(false);
+		setCustomerID("");
+		temperature = "";
 	}
 
 }

@@ -18,7 +18,7 @@ public class Main extends Application {
 			CustomerBalanceController controller = (CustomerBalanceController)loader.getController();
 			controller.applicationStage = primaryStage;
 			
-			Scene scene = new Scene(root,400,400);
+			Scene scene = new Scene(root,400,600);
 			
 			primaryStage.setScene(scene);
 			primaryStage.setTitle("Laundry Project");

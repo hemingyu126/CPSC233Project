@@ -9,9 +9,9 @@ public class DataCenter {
 	DataCenter(){
 		customers = new ArrayList<Customer>();
 		machines = new ArrayList<Machine>();
-		WashingMachine machine1 = new WashingMachine("Washing Machine 1", 1.75, "wm1");
-		WashingMachine machine2 = new WashingMachine("Washing Machine 2", 1.75, "wm2");
-		WashingMachine machine3 = new WashingMachine("Washing Machine 3", 1.75, "wm3");
+		WashingMachine machine1 = new WashingMachine("Washing Machine 1", 1.75);
+		WashingMachine machine2 = new WashingMachine("Washing Machine 2", 1.75);
+		WashingMachine machine3 = new WashingMachine("Washing Machine 3", 1.75);
 		Dryer dryer1 = new Dryer("Dryer 1", 1.25);
 		Dryer dryer2 = new Dryer("Dryer 2", 1.25);
 		Dryer dryer3 = new Dryer("Dryer 3", 1.25);
@@ -52,6 +52,9 @@ public class DataCenter {
 			}
 		if (requestedID.length()!=4)
 			return "Customer ID must be 4 digits. The ID you requested is "+requestedID.length()+ " digits";
+		for (Customer c: customers)
+			if(c.getCustomerID().equals(requestedID))
+				return "This customer ID already exists. Please try another one.";
 		Customer toAdd = new Customer(requestedID);
 		customers.add(toAdd);
 		return "";

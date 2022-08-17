@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.collections.FXCollections?>
 
-<VBox prefHeight="582.0" prefWidth="433.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.CustomerBalanceController">
+<VBox prefHeight="582.0" prefWidth="433.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.LaundryRoomController">
    <children>
       <Label prefHeight="20.0" prefWidth="291.0" text="Please enter your customer number:">
          <opaqueInsets>
@@ -65,7 +65,7 @@
                   <Insets left="10.0" />
                </HBox.margin>
             </Label>
-            <Button mnemonicParsing="false" onAction="#Newaccount" prefHeight="35.0" prefWidth="119.0" text="New account">
+            <Button mnemonicParsing="false" onAction="#newAccount" prefHeight="35.0" prefWidth="119.0" text="New account">
                <HBox.margin>
                   <Insets left="15.0" />
                </HBox.margin>
@@ -79,7 +79,7 @@
          <children>
             <Label prefHeight="33.0" prefWidth="166.0" text="Please choose the amount :">
                <font>
-                  <Font size="13.0" />
+                  <Font size="14.0" />
                </font>
                <HBox.margin>
                   <Insets left="10.0" />
@@ -107,7 +107,17 @@
             <Insets left="10.0" />
          </VBox.margin>
       </Label>
-      <HBox prefHeight="35.0" prefWidth="433.0" />
+      <HBox prefHeight="84.0" prefWidth="433.0">
+         <children>
+            <Label text="Price List: &#10;Washing Machine:   CAD 1.75  &#10;Dryer:                             CAD 1.25">
+               <font>
+                  <Font size="14.0" />
+               </font>
+               <HBox.margin>
+                  <Insets left="10.0" top="10.0" />
+               </HBox.margin>
+            </Label>
+         </children></HBox>
       <Label prefHeight="26.0" prefWidth="227.0" text="Please enter your machine number:">
          <font>
             <Font size="14.0" />
@@ -140,9 +150,59 @@
             </Button>
          </children>
       </HBox>
+      <HBox prefHeight="56.0" prefWidth="433.0">
+         <children>
+            <Label text="Wash mode:">
+               <HBox.margin>
+                  <Insets left="10.0" top="12.0" />
+               </HBox.margin>
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <ChoiceBox fx:id="washModeChoiceBox" prefWidth="150.0">
+            	<items>
+            		<FXCollections fx:factory="observableArrayList">
+            			<String fx:value="Normal" />
+            			<String fx:value="Cotton" />
+            			<String fx:value="Delicate" />
+            			<String fx:value="Extra Strong" />
+            		</FXCollections>
+            	</items>
+               <HBox.margin>
+                  <Insets left="62.0" top="10.0" />
+               </HBox.margin>
+            </ChoiceBox>
+         </children>
+      </HBox>
+      <HBox prefHeight="47.0" prefWidth="433.0">
+         <children>
+            <Label text="Dryer Temperature:">
+               <HBox.margin>
+                  <Insets left="10.0" top="2.0" />
+               </HBox.margin>
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <ChoiceBox fx:id="temperatureChoiceBox" prefWidth="150.0">
+            	<items>
+            		<FXCollections fx:factory="observableArrayList">
+            			<String fx:value="Room temperature" />
+            			<String fx:value="Low" />
+            			<String fx:value="Medium" />
+            			<String fx:value="High" />
+            		</FXCollections>
+            	</items>
+               <HBox.margin>
+                  <Insets left="30.0" />
+               </HBox.margin>
+            </ChoiceBox>
+         </children>
+      </HBox>
       <HBox prefHeight="35.0" prefWidth="433.0">
          <children>
-            <Button mnemonicParsing="false" onAction="#Start" prefHeight="29.0" prefWidth="111.0" text="Press to Start">
+            <Button mnemonicParsing="false" onAction="#startMachine" prefHeight="29.0" prefWidth="111.0" text="Press to Start">
                <HBox.margin>
                   <Insets left="80.0" />
                </HBox.margin>
@@ -150,7 +210,7 @@
                   <Font size="13.0" />
                </font>
             </Button>
-            <Button mnemonicParsing="false" onAction="#End" prefHeight="29.0" prefWidth="65.0" text="End">
+            <Button mnemonicParsing="false" onAction="#endMachine" prefHeight="29.0" prefWidth="65.0" text="End">
                <HBox.margin>
                   <Insets left="80.0" />
                </HBox.margin>

@@ -3,12 +3,10 @@ package application;
 public class WashingMachine extends Machine{
 	
 	private String washMode = "";
-	private String pausePassword;
 	
-	WashingMachine(String machineName, double price, String pwd){
+	WashingMachine(String machineName, double price){
 		this.setName(machineName);;
 		this.setPricePerUse(price);;
-		pausePassword = pwd;
 	}
 	
 	public String getWashMode() {
@@ -22,28 +20,36 @@ public class WashingMachine extends Machine{
 	@Override
 	public String start(String id, String mode) {
 		if (!this.getStatus())
-			return "Sorry, this machine is not available to use.";
+			return "Sorry, this machine is under maintenance. Please find another one.";
 		else if (this.getInUse())
-			return "This machine is currently in use. Please find another one.";
+			return "Sorry, this machine is in use. Please find another one.";
 		else {
 			setWashMode(mode);
-			this.setInUse(true);;
+			setInUse(true);
+			setCustomerID(id);
 			return "";
 		}
 	}
 
 	@Override
-	public String pause() {
-		return "Wash cannot be paused. Please see a staff member for assistance.";
+	public String pause(String id) {
+		if (!this.getInUse())
+			return "This machine is not in use.";
+		else if (!id.equals(getCustomerID()))
+			return "You cannot stop the machine, because it's serving someone else.";
+		else {
+			setWashMode("");
+			setInUse(false);
+			setCustomerID("");
+			return "";
+		}
 	}
 
 	@Override
-	public String pause(String password) {
-		if (password!=null && password.equals(pausePassword)) {
-			setWashMode("");
-			this.setInUse(false);;
-			return "";
-		}else return "Invalid Password";
+	public void pause() {
+		setWashMode("");
+		setInUse(false);
+		setCustomerID("");
 	}
 
 }

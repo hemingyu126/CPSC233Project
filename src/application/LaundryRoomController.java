@@ -9,7 +9,7 @@ import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
-public class CustomerBalanceController {
+public class LaundryRoomController {
 	Stage applicationStage;
 	private Customer customerInUse;
 
